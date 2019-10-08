@@ -8,6 +8,7 @@ module.exports = {
     es6: true,
   },
   rules: {
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     indent: [
       2,
       2,
