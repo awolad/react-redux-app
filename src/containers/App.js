@@ -11,6 +11,14 @@ class App extends Component {
     const { date } = this.state;
     return (
       <div>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/posts">Posts</a>
+          </li>
+        </ul>
         <HelloWorld name={date.toLocaleTimeString()} />
       </div>
     );

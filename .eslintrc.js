@@ -8,8 +8,11 @@ module.exports = {
     es6: true,
   },
   rules: {
+    'no-console': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/forbid-prop-types': [0],
+    'react/static-property-placement': [0],
+    'react/no-array-index-key': [0],
     indent: [
       2,
       2,
