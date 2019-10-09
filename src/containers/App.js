@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import HelloWorld from '../components/HelloWord';
 
 class App extends Component {
@@ -13,10 +14,10 @@ class App extends Component {
       <div>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <a href="/posts">Posts</a>
+            <NavLink to="/posts">Posts</NavLink>
           </li>
         </ul>
         <HelloWorld name={date.toLocaleTimeString()} />
