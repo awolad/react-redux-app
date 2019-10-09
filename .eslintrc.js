@@ -16,5 +16,7 @@ module.exports = {
         SwitchCase: 1,
       },
     ],
+    'global-require': 0,
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };
