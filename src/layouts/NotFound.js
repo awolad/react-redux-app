@@ -1,35 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AdNavBar from '../components/AdNavBar';
-import AdMainSlider from '../components/AdMainSlider';
 
-// const Default = ({ children }) => (
-//   <>
-//     <div className="default-layout">
-//       <AdNavBar />
-//       <AdMainSlider />
-//       {children}
-//     </div>
-//   </>
-// );
-
-class Default extends Component {
+class NotFound extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
   };
 
   componentDidMount() {
     // const { children } = this.props;
-    // console.log(children);
   }
 
   render() {
     const { children } = this.props;
     return (
       <>
-        <div className="default-layout">
+        <div className="not-found-layout">
           <AdNavBar />
-          <AdMainSlider />
           {children}
         </div>
       </>
@@ -37,4 +24,4 @@ class Default extends Component {
   }
 }
 
-export default Default;
+export default NotFound;

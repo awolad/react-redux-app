@@ -11,7 +11,7 @@ class PostIndex extends Component {
 
   componentDidMount() {
     const { posts } = this.props;
-    console.log(posts);
+    // console.log(posts);
   }
 
   render() {
