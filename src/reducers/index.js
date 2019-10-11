@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { categories } from './category';
 
 const dummyPosts = [
   { id: 1, title: 'Post One' },
@@ -10,6 +11,7 @@ const posts = (state = dummyPosts, action) => state;
 
 const rootReducer = combineReducers({
   posts,
+  categories,
 });
 
 export default rootReducer;

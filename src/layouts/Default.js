@@ -27,6 +27,7 @@ class Default extends Component {
     // console.log(children);
     const { dispatch } = this.props;
     dispatch(fetchCategories());
+    // console.log('dispatch()');
   }
 
   render() {
@@ -43,7 +44,7 @@ class Default extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { posts } = state;
 
   return {
