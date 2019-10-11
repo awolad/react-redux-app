@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
+// import DevTools from '../containers/DevTools';
 
 const configureStore = (preloadedState) => {
   const store = createStore(
@@ -10,7 +10,9 @@ const configureStore = (preloadedState) => {
     preloadedState,
     compose(
       applyMiddleware(thunk, createLogger()),
-      DevTools.instrument(),
+      // DevTools.instrument(),
+      window.__REDUX_DEVTOOLS_EXTENSION__
+        && window.__REDUX_DEVTOOLS_EXTENSION__(),
     ),
   );
 
