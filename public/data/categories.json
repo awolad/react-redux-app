@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Health",
+    "slug": "health"
+  },
+  {
+    "id": 2,
+    "title": "Humanities",
+    "slug": "humanities"
+  },
+  {
+    "id": 3,
+    "title": "Politics",
+    "slug": "politics"
+  },
+  {
+    "id": 4,
+    "title": "Technology",
+    "slug": "technology"
+  },
+  {
+    "id": 5,
+    "title": "Society",
+    "slug": "society"
+  },
+  {
+    "id": 6,
+    "title": "Business",
+    "slug": "business"
+  },
+  {
+    "id": 7,
+    "title": "Bangladesh",
+    "slug": "bangladesh"
+  },
+  {
+    "id": 8,
+    "title": "Economics",
+    "slug": "economics"
+  },
+  {
+    "id": 9,
+    "title": "Sports",
+    "slug": "sports"
+  },
+  {
+    "id": 10,
+    "title": "Entertainment",
+    "slug": "entertainment"
+  }
+]

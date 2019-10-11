@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AdNavBar from '../components/AdNavBar';
 import AdMainSlider from '../components/AdMainSlider';
+import { fetchCategories } from '../actions/category';
 
 // const Default = ({ children }) => (
 //   <>
@@ -16,11 +19,14 @@ import AdMainSlider from '../components/AdMainSlider';
 class Default extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     // const { children } = this.props;
     // console.log(children);
+    const { dispatch } = this.props;
+    dispatch(fetchCategories());
   }
 
   render() {
@@ -37,4 +43,12 @@ class Default extends Component {
   }
 }
 
-export default Default;
+const mapStateToProps = (state) => {
+  const { posts } = state;
+
+  return {
+    posts,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(Default));
