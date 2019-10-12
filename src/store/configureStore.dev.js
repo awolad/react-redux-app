@@ -4,12 +4,14 @@ import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 // import DevTools from '../containers/DevTools';
 
+const middlewares = [thunk];
+
 const configureStore = (preloadedState) => {
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
-      applyMiddleware(thunk, createLogger()),
+      applyMiddleware(...middlewares, createLogger()),
       // DevTools.instrument(),
       window.__REDUX_DEVTOOLS_EXTENSION__
         && window.__REDUX_DEVTOOLS_EXTENSION__(),
