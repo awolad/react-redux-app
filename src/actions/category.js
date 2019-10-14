@@ -14,18 +14,18 @@ function fetchCategoriesPending() {
 function fetchCategoriesSuccess(categories) {
   return {
     type: FETCH_CATEGORIES_SUCCESS,
-    categories,
+    payload: categories,
   };
 }
 
-function fetchCategoriesError(error) {
+function fetchCategoriesFailure(error) {
   return {
     type: FETCH_CATEGORIES_FAILURE,
     error,
   };
 }
 
-/*
+/**
  * then()
  */
 // export const fetchCategories = () => (dispatch) => {
@@ -38,16 +38,30 @@ function fetchCategoriesError(error) {
 //   });
 // };
 
-/*
+export const fetchCategories = () => (dispatch) => {
+  dispatch(fetchCategoriesPending());
+  setTimeout(() => {
+    axios
+      .get(`${process.env.REACT_APP_URL}/data/categoriess.json`)
+      .then((res) => {
+        dispatch(fetchCategoriesSuccess(res.data));
+      })
+      .catch((error) => {
+        dispatch(fetchCategoriesFailure(error));
+      });
+  }, 3000);
+};
+
+/**
  * async, await
  */
-export const fetchCategories = () => async (dispatch) => {
-  const res = await axios.get(
-    `${process.env.REACT_APP_URL}/data/categories.json`,
-  );
-  console.log(res.data);
-  dispatch({
-    type: FETCH_CATEGORIES_SUCCESS,
-    payload: res.data,
-  });
-};
+// export const fetchCategories = () => async (dispatch) => {
+//   const res = await axios.get(
+//     `${process.env.REACT_APP_URL}/data/categories.json`,
+//   );
+//   console.log(res.data);
+//   dispatch({
+//     type: FETCH_CATEGORIES_SUCCESS,
+//     payload: res.data,
+//   });
+// };
