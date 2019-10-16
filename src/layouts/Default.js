@@ -41,16 +41,16 @@ class Default extends Component {
     return (
       <>
         <div className="default-layout">
-          <AdNavBar />
+          <AdNavBar category={category} />
           <AdMainSlider />
           {children}
-          {console.log('------------------categories--------------')}
+          {/* {console.log('------------------categories--------------')} */}
           {/* {console.log(posts)} */}
           {/* {category ? console.log(category) : 'fds'} */}
-          {console.log('error', category.error)}
-          {console.log('----------------categories----------------')}
+          {/* {console.log('error', category.error)} */}
+          {/* {console.log('----------------categories----------------')} */}
 
-          {category.pending ? (
+          {/* {category.pending ? (
             <h2>Loading...</h2>
           ) : (
             <ul>
@@ -58,7 +58,7 @@ class Default extends Component {
                 <li key={i}>{singleCategory.title}</li>
               ))}
             </ul>
-          )}
+          )} */}
 
           {/* <ul>
             {category.categories.map((singleCategory, i) => (

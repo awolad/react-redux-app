@@ -6,10 +6,8 @@ import {
 
 const initialState = {
   pending: false,
-  isPending: false,
   categories: [],
-  error: '',
-  hasError: null,
+  error: null,
 };
 
 export const category = (state = initialState, action) => {
@@ -17,19 +15,19 @@ export const category = (state = initialState, action) => {
     case FETCH_CATEGORIES_PENDING:
       return {
         ...state,
-        isPending: true,
+        pending: true,
       };
     case FETCH_CATEGORIES_SUCCESS:
       return {
         ...state,
-        isPending: false,
+        pending: false,
         categories: action.payload,
       };
     case FETCH_CATEGORIES_FAILURE:
       return {
         ...state,
-        isPending: false,
-        hasError: action.error.message,
+        pending: false,
+        error: action.error.message,
       };
     default:
       return state;
