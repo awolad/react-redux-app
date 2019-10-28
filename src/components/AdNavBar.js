@@ -9,9 +9,6 @@ const AdNavBar = ({ category }) => {
   const handleError = (text) => toastr.error(text);
   return (
     <>
-      {/* <button type="button" onClick={() => handleError(category.error)}>
-        click me!
-      </button> */}
       <div className="ad-navbar">
         <Navbar bg="primary" variant="dark">
           <NavLink className="navbar-brand" to="/">
@@ -22,11 +19,7 @@ const AdNavBar = ({ category }) => {
               <Spinner animation="grow" size="sm" />
               <Spinner animation="grow" size="sm" className="ml-5" />
               <Spinner animation="grow" size="sm" className="ml-5" />
-            </Navbar.Brand> ? (
-                category.error
-              ) : (
-                handleError(category.error)
-              )
+            </Navbar.Brand>
           ) : (
             <Nav className="mr-auto">
               {category.categories.map((item, i) => (
@@ -36,6 +29,7 @@ const AdNavBar = ({ category }) => {
               ))}
             </Nav>
           )}
+          {category.error ? handleError(category.error) : ''}
         </Navbar>
       </div>
     </>
