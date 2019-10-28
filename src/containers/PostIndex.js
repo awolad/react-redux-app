@@ -2,29 +2,53 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Posts from '../components/Posts';
+import { Container, Row, Col } from 'react-bootstrap';
+import AdPosts from '../components/AdPosts';
+import AdPageHeaderImage from '../components/AdPageHeaderImage';
+import AdBreadcrumb from '../components/AdBreadcrumb';
+import { fetchPosts } from '../actions/post';
 
 class PostIndex extends Component {
   static propTypes = {
-    posts: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    post: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
-    const { posts } = this.props;
-    // console.log(posts);
+    const { dispatch } = this.props;
+    console.log('dispatching...');
+    dispatch(fetchPosts());
+    console.log('dispached...');
   }
 
   render() {
-    const { posts } = this.props;
-    return <Posts posts={posts} />;
+    const { post } = this.props;
+    const breadcrumbItems = [
+      { url: '/', text: 'Home', active: false },
+      { url: '/posts', text: 'Posts', active: true },
+    ];
+
+    return (
+      <>
+        <AdPageHeaderImage />
+        <Container>
+          <Row>
+            <Col md={12}>
+              <AdBreadcrumb data={breadcrumbItems} />
+              <AdPosts data={post} />
+            </Col>
+          </Row>
+        </Container>
+      </>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  const { posts } = state;
+  const { post } = state;
 
   return {
-    posts,
+    post,
   };
 };
 

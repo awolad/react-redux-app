@@ -35,6 +35,6 @@ export const category = (state = initialState, action) => {
 };
 
 // selectors
-export const getCategories = state => state.category.categories;
-export const getCategoriesPending = state => state.category.pending;
-export const getCategoriesError = state => state.category.error;
+// export const getCategories = (state) => state.category.categories;
+// export const getCategoriesPending = (state) => state.category.pending;
+// export const getCategoriesError = (state) => state.category.error;

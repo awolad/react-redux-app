@@ -10,7 +10,7 @@ const AdNavBar = ({ category }) => {
   return (
     <>
       <div className="ad-navbar">
-        <Navbar bg="primary" variant="dark">
+        <Navbar bg="primary" variant="dark" fixed="top">
           <NavLink className="navbar-brand" to="/">
             React App
           </NavLink>

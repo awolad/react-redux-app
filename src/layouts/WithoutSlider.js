@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdNavBar from '../components/AdNavBar';
-import AdMainSlider from '../components/AdMainSlider';
 import { fetchCategories } from '../actions/category';
 
-class Default extends Component {
+class WithoutSlider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -22,9 +21,8 @@ class Default extends Component {
     const { children, category } = this.props;
     return (
       <>
-        <div className="default-layout">
+        <div className="without-slider-layout">
           <AdNavBar category={category} />
-          <AdMainSlider />
           {children}
         </div>
       </>
@@ -40,4 +38,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Default));
+export default withRouter(connect(mapStateToProps)(WithoutSlider));
