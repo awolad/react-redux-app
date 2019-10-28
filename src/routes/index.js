@@ -5,8 +5,10 @@ import Home from '../containers/Home';
 import PostIndex from '../containers/PostIndex';
 import Default from '../layouts/Default';
 import WithoutSlider from '../layouts/WithoutSlider';
+import WithRightSidebar from '../layouts/WithRightSidebar';
 import NotFound from '../layouts/NotFound';
 import AdNotFound from '../components/AdNotFound';
+import SinglePost from '../containers/SinglePost';
 
 const Routes = () => (
   <Router>
@@ -17,6 +19,12 @@ const Routes = () => (
         path="/posts"
         layout={WithoutSlider}
         component={PostIndex}
+      />
+      <AppRoute
+        exact
+        path="/:id/:slug"
+        layout={WithRightSidebar}
+        component={SinglePost}
       />
       <AppRoute path="*" layout={NotFound} component={AdNotFound} />
     </Switch>

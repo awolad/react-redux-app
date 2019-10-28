@@ -4,6 +4,7 @@ import {
  Container, Row, Col, Card, Button 
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import slugify from 'slugify';
 
 // const AdPosts = ({ data }) => ;
 class AdPosts extends Component {
@@ -46,7 +47,10 @@ class AdPosts extends Component {
                   <Card.Body>
                     <Card.Title>{this.formattedTitle(post.title)}</Card.Title>
                     <Card.Text>{this.formattedBody(post.body)}</Card.Text>
-                    <Link to="/" className="btn btn-primary btn-block">
+                    <Link
+                      to={`/${post.id}/${slugify(post.title)}`}
+                      className="btn btn-primary btn-block"
+                    >
                       View
                     </Link>
                   </Card.Body>
