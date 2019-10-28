@@ -42,7 +42,7 @@ export const fetchCategories = () => (dispatch) => {
   dispatch(fetchCategoriesPending());
   setTimeout(() => {
     axios
-      .get(`${process.env.REACT_APP_URL}/data/categoriess.json`)
+      .get(`${process.env.REACT_APP_URL}/data/categories.json`)
       .then((res) => {
         dispatch(fetchCategoriesSuccess(res.data));
       })

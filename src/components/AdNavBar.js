@@ -6,7 +6,7 @@ import { toastr } from 'react-redux-toastr';
 // import MainMenuLoader from './loaders/MainMenuLoader';
 
 const AdNavBar = ({ category }) => {
-  const handleError = (text) => toastr.error(text);
+  const handleError = (title, message) => toastr.error(title, message);
   return (
     <>
       <div className="ad-navbar">
@@ -29,7 +29,7 @@ const AdNavBar = ({ category }) => {
               ))}
             </Nav>
           )}
-          {category.error ? handleError(category.error) : ''}
+          {category.error ? handleError('Category', category.error) : ''}
         </Navbar>
       </div>
     </>
