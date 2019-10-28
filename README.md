@@ -2,9 +2,9 @@
 
 A single page application
 
-API: https://jsonplaceholder.typicode.com
-Lint Plugin: https://www.npmjs.com/package/eslint-config-airbnb
-Article: http://www.hackingwithreact.com/read/1/40/linting-react-using-airbnbs-eslint-rules
+- API: https://jsonplaceholder.typicode.com
+- Lint Plugin: https://www.npmjs.com/package/eslint-config-airbnb
+- Article: http://www.hackingwithreact.com/read/1/40/linting-react-using-airbnbs-eslint-rules
 
 ## Installation
 
