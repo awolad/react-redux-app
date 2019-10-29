@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdNavBar from '../components/AdNavBar';
+import AdFooter from '../components/AdFooter';
 import { fetchCategories } from '../actions/category';
 
 class WithRightSidebar extends Component {
@@ -25,7 +26,7 @@ class WithRightSidebar extends Component {
           <AdNavBar category={category} />
           <aside>Right Sidebar</aside>
           {children}
-          <h1>Footer</h1>
+          <AdFooter />
         </div>
       </>
     );

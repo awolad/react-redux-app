@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {
+ Container, Row, Col, Card, Button 
+} from 'react-bootstrap';
 import AdPageHeaderImage from '../components/AdPageHeaderImage';
 import AdBreadcrumb from '../components/AdBreadcrumb';
+import { fetchPosts, fetchPost } from '../actions/post';
 
 class SinglePost extends Component {
-  componentDidMount() {}
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    post: PropTypes.object.isRequired,
+  };
+
+  async componentDidMount() {
+    const { dispatch, post } = this.props;
+    await dispatch(fetchPost(1));
+    await dispatch(fetchPosts());
+    console.log(post);
+  }
 
   render() {
     const breadcrumbItems = [
@@ -22,11 +37,46 @@ class SinglePost extends Component {
               <AdBreadcrumb data={breadcrumbItems} />
             </Col>
           </Row>
+          <Row>
+            <Col md={8}>
+              <Card>
+                <Card.Img
+                  variant="top"
+                  src={`${process.env.REACT_APP_PHOTO_API}/10/800/350`}
+                />
+                <Card.Body>
+                  <Card.Title>Card Title</Card.Title>
+                  <Card.Text>
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>Similar Posts</Card.Title>
+                  <Link className="card-link" to="/">
+                    lorem sdfoi s fdsijfolij osdif sdfsdf sdf dfg...
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         </Container>
-        <Link to="/posts">back</Link>
       </>
     );
   }
 }
 
-export default SinglePost;
+const mapStateToProps = (state) => {
+  const { post } = state;
+
+  return {
+    post,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(SinglePost));

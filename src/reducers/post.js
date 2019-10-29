@@ -37,7 +37,6 @@ export const post = (state = initialState, action) => {
       return {
         ...state,
         pending: true,
-        error: action.error.message,
       };
     case FETCH_POST_SUCCESS:
       return {

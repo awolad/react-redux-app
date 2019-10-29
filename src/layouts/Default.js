@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import AdNavBar from '../components/AdNavBar';
 import AdMainSlider from '../components/AdMainSlider';
 import { fetchCategories } from '../actions/category';
+import AdFooter from '../components/AdFooter';
 
 class Default extends Component {
   static propTypes = {
@@ -26,6 +27,7 @@ class Default extends Component {
           <AdNavBar category={category} />
           <AdMainSlider />
           {children}
+          <AdFooter />
         </div>
       </>
     );

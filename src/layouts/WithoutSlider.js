@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdNavBar from '../components/AdNavBar';
 import { fetchCategories } from '../actions/category';
+import AdFooter from '../components/AdFooter';
 
 class WithoutSlider extends Component {
   static propTypes = {
@@ -24,6 +25,7 @@ class WithoutSlider extends Component {
         <div className="without-slider-layout">
           <AdNavBar category={category} />
           {children}
+          <AdFooter />
         </div>
       </>
     );
