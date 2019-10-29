@@ -22,6 +22,13 @@ class SinglePost extends Component {
     console.log(post);
   }
 
+  // componentDidMount() {
+  //   const { dispatch, post } = this.props;
+  //   dispatch(fetchPosts());
+  //   dispatch(fetchPost(1));
+  //   console.log(post);
+  // }
+
   render() {
     const breadcrumbItems = [
       { url: '/', text: 'Home', active: false },

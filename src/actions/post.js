@@ -7,6 +7,7 @@ import {
   FETCH_POST_SUCCESS,
   FETCH_POST_FAILURE,
 } from './actionTypes';
+import { postService } from '../service/api/post.service';
 
 /**
  * Fetch all posts
@@ -79,16 +80,30 @@ function fetchPostFailure(error) {
   };
 }
 
-export const fetchPost = (postID) => (dispatch) => {
+// export const fetchPost = (postID) => (dispatch) => {
+//   dispatch(fetchPostPending());
+//   setTimeout(() => {
+//     axios
+//       .get(`${process.env.REACT_APP_API_HOST}/posts/${postID}`)
+//       .then((res) => {
+//         dispatch(fetchPostSucess(res.data));
+//       })
+//       .catch((error) => {
+//         dispatch(fetchPostFailure(error));
+//       });
+//   }, 5000);
+// };
+
+/**
+ * async, await
+ */
+export const fetchPost = (postID) => async (dispatch) => {
   dispatch(fetchPostPending());
-  setTimeout(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_HOST}/posts/${postID}`)
-      .then((res) => {
-        dispatch(fetchPostSucess(res.data));
-      })
-      .catch((error) => {
-        dispatch(fetchPostFailure(error));
-      });
-  }, 5000);
+  const result = await postService.getPostByID(postID).catch((err) => {
+    dispatch(fetchPostFailure(err));
+  });
+
+  if (result) {
+    dispatch(fetchPostSucess(result));
+  }
 };
