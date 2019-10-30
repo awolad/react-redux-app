@@ -48,7 +48,7 @@ export const post = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
-        error: action.error.message,
+        error: action.error,
       };
     default:
       return state;

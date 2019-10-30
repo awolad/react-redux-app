@@ -12,21 +12,19 @@ import { fetchPosts, fetchPost } from '../actions/post';
 class SinglePost extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    post: PropTypes.object.isRequired,
+    // post: PropTypes.object.isRequired,
   };
 
   async componentDidMount() {
-    const { dispatch, post } = this.props;
+    const { dispatch } = this.props;
     await dispatch(fetchPost(1));
     await dispatch(fetchPosts());
-    console.log(post);
   }
 
   // componentDidMount() {
-  //   const { dispatch, post } = this.props;
-  //   dispatch(fetchPosts());
+  //   const { dispatch } = this.props;
   //   dispatch(fetchPost(1));
-  //   console.log(post);
+  //   dispatch(fetchPosts());
   // }
 
   render() {

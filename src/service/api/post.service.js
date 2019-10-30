@@ -7,6 +7,14 @@ class PostService extends ApiService {
 
   getPostByID(postID) {
     return this.get(`posts/${postID}`);
+
+    // return new Promise((resolve) => {
+    //   setTimeout(() => resolve(this.get(`posts/${postID}`)), 5000);
+    // });
+
+    // return new Promise((resolve, reject) => {
+    //   reject('error by Awolad');
+    // });
   }
 }
 

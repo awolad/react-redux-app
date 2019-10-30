@@ -28,24 +28,19 @@ function fetchCategoriesFailure(error) {
 /**
  * then()
  */
-// export const fetchCategories = () => (dispatch) => {
-//   axios.get(`${process.env.REACT_APP_URL}/data/categories.json`).then((res) => {
-//     console.log(res.data);
-//     dispatch({
-//       type: 'RECEIVE_CATEGORIES',
-//       payload: res.data,
-//     });
-//   });
-// };
-
 export const fetchCategories = () => (dispatch) => {
   dispatch(fetchCategoriesPending());
   axios
-    .get(`${process.env.REACT_APP_URL}/data/categories.json`)
+    .get(`${process.env.REACT_APP_URL}/data/categoriess.json`)
     .then((res) => {
       dispatch(fetchCategoriesSuccess(res.data));
     })
     .catch((error) => {
+      console.log(error.response);
+      console.log(error);
+      console.log(error.response.status);
+      console.log(error.response.statusText);
+      console.log(error.response.data);
       dispatch(fetchCategoriesFailure(error));
     });
 };
@@ -57,7 +52,6 @@ export const fetchCategories = () => (dispatch) => {
 //   const res = await axios.get(
 //     `${process.env.REACT_APP_URL}/data/categories.json`,
 //   );
-//   console.log(res.data);
 //   dispatch({
 //     type: FETCH_CATEGORIES_SUCCESS,
 //     payload: res.data,

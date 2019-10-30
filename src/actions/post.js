@@ -100,6 +100,7 @@ function fetchPostFailure(error) {
 export const fetchPost = (postID) => async (dispatch) => {
   dispatch(fetchPostPending());
   const result = await postService.getPostByID(postID).catch((err) => {
+    console.log(err);
     dispatch(fetchPostFailure(err));
   });
 

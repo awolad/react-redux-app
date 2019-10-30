@@ -17,22 +17,26 @@ export function setApiErrorHandler(handler) {
   apiErrorHandler = handler;
 }
 
-API.interceptors.response.use(undefined, (err) => {
-  if (apiErrorHandler) {
-    apiErrorHandler(err);
-  }
+// API.interceptors.response.use(undefined, (err) => {
+//   if (apiErrorHandler) {
+//     apiErrorHandler(err);
+//   }
 
-  if (err.response) {
-    return Promise.reject(err.response.data);
-  }
+//   if (err.response) {
+//     return Promise.reject(err.response.data);
+//   }
 
-  return Promise.reject(err);
-});
+//   return Promise.reject(err);
+// });
 
 export class ApiService {
-  async get(path, params) {
-    const value = await API.get(path, { params });
-    return value.data;
+  // async get(path, params) {
+  //   const value = await API.get(path, { params });
+  //   return value.data;
+  // }
+
+  get(path, params) {
+    return API.get(path, { params }).then((value) => value.data);
   }
 
   async getList(path, params) {
