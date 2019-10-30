@@ -5,75 +5,45 @@ import axios from 'axios';
 
 const baseURL = process.env.REACT_APP_API_HOST;
 
-let apiErrorHandler;
-
 export const API = axios.create({
   baseURL,
   withCredentials: false, // should be `true` when auth need
   timeout: 60000,
 });
 
-export function setApiErrorHandler(handler) {
-  apiErrorHandler = handler;
-}
-
-// API.interceptors.response.use(undefined, (err) => {
-//   if (apiErrorHandler) {
-//     apiErrorHandler(err);
-//   }
-
-//   if (err.response) {
-//     return Promise.reject(err.response.data);
-//   }
-
-//   return Promise.reject(err);
-// });
-
 export class ApiService {
-  // async get(path, params) {
-  //   const value = await API.get(path, { params });
-  //   return value.data;
-  // }
-
   get(path, params) {
     return API.get(path, { params }).then((value) => value.data);
   }
 
-  async getList(path, params) {
-    const value = await API.get(path, { params });
-    return value.data.data;
+  getList(path, params) {
+    return API.get(path, { params }).then((value) => value.data.data);
   }
 
-  async delete(path, params) {
-    const value = await API.delete(path, { params });
-    return value.data;
+  delete(path, params) {
+    return API.delete(path, { params }).then((value) => value.data);
   }
 
-  async head(path, params) {
-    const value = await API.head(path, { params });
-    return value.data;
+  head(path, params) {
+    return API.head(path, { params }).then((value) => value.data);
   }
 
-  async post(path, data) {
-    const value = await API.post(path, data);
-    return value.data;
+  post(path, data) {
+    return API.post(path, data).then((value) => value.data);
   }
 
-  async put(path, data) {
-    const value = await API.put(path, data);
-    return value.data;
+  put(path, data) {
+    return API.put(path, data).then((value) => value.data);
   }
 
-  async patch(path, data) {
-    const value = await API.patch(path, data);
-    return value.data;
+  patch(path, data) {
+    return API.patch(path, data).then((value) => value.data);
   }
 
-  async downloadFile(fullPath, params) {
-    const res = await API.get(fullPath, {
+  downloadFile(fullPath, params) {
+    return API.get(fullPath, {
       params,
       responseType: 'blob',
-    });
-    return new Blob([res.data]);
+    }).then((res) => new Blob([res.data]));
   }
 }
