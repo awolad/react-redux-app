@@ -25,35 +25,14 @@ function fetchCategoriesFailure(error) {
   };
 }
 
-/**
- * then()
- */
 export const fetchCategories = () => (dispatch) => {
   dispatch(fetchCategoriesPending());
   axios
-    .get(`${process.env.REACT_APP_URL}/data/categoriess.json`)
+    .get(`${process.env.REACT_APP_URL}/data/categories.json`)
     .then((res) => {
       dispatch(fetchCategoriesSuccess(res.data));
     })
     .catch((error) => {
-      console.log(error.response);
-      console.log(error);
-      console.log(error.response.status);
-      console.log(error.response.statusText);
-      console.log(error.response.data);
       dispatch(fetchCategoriesFailure(error));
     });
 };
-
-/**
- * async, await
- */
-// export const fetchCategories = () => async (dispatch) => {
-//   const res = await axios.get(
-//     `${process.env.REACT_APP_URL}/data/categories.json`,
-//   );
-//   dispatch({
-//     type: FETCH_CATEGORIES_SUCCESS,
-//     payload: res.data,
-//   });
-// };

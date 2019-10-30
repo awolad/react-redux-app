@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   FETCH_POSTS_PENDING,
   FETCH_POSTS_SUCCESS,
@@ -32,28 +31,15 @@ function fetchPostsFailure(error) {
   };
 }
 
-// export const fetchPosts = () => (dispatch) => {
-//   dispatch(fetchPostsPending());
-//   axios
-//     .get(`${process.env.REACT_APP_API_HOST}/posts`)
-//     .then((res) => {
-//       dispatch(fetchPostsSuccess(res.data));
-//     })
-//     .catch((error) => {
-//       dispatch(fetchPostsFailure(error));
-//     });
-// };
-
-export const fetchPosts = () => (dispatch) => {
+export const fetchPosts = () => async (dispatch) => {
   dispatch(fetchPostsPending());
-  axios
-    .get(`${process.env.REACT_APP_API_HOST}/posts`)
-    .then((res) => {
-      dispatch(fetchPostsSuccess(res.data));
-    })
-    .catch((error) => {
-      dispatch(fetchPostsFailure(error));
-    });
+  const result = await postService.getAllPosts().catch((err) => {
+    dispatch(fetchPostsFailure(err));
+  });
+
+  if (result) {
+    dispatch(fetchPostsSuccess(result));
+  }
 };
 
 /**
@@ -80,27 +66,9 @@ function fetchPostFailure(error) {
   };
 }
 
-// export const fetchPost = (postID) => (dispatch) => {
-//   dispatch(fetchPostPending());
-//   setTimeout(() => {
-//     axios
-//       .get(`${process.env.REACT_APP_API_HOST}/posts/${postID}`)
-//       .then((res) => {
-//         dispatch(fetchPostSucess(res.data));
-//       })
-//       .catch((error) => {
-//         dispatch(fetchPostFailure(error));
-//       });
-//   }, 5000);
-// };
-
-/**
- * async, await
- */
 export const fetchPost = (postID) => async (dispatch) => {
   dispatch(fetchPostPending());
   const result = await postService.getPostByID(postID).catch((err) => {
-    console.log(err);
     dispatch(fetchPostFailure(err));
   });
 
