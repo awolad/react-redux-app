@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import slugify from 'slugify';
 import { strSlice } from '../helpers';
 
-const AdSimilarPosts = ({ data }) => (
-  <div className="ad-post mb-3">
+const AdAuthorPosts = ({ data }) => (
+  <div className="ad-author-posts">
     <Card>
-      <Card.Header>Similar Posts</Card.Header>
+      <Card.Header>More From This Author</Card.Header>
       <Card.Body>
         {data
           ? data.map((post, index) => (
@@ -31,8 +31,8 @@ const AdSimilarPosts = ({ data }) => (
   </div>
 );
 
-AdSimilarPosts.propTypes = {
+AdAuthorPosts.propTypes = {
   data: PropTypes.array.isRequired,
 };
 
-export default AdSimilarPosts;
+export default AdAuthorPosts;
