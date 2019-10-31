@@ -1,0 +1,9 @@
+.card-title,
+.card-body {
+  text-decoration: none;
+  color: #212529;
+}
+.card-post-link:hover {
+  text-decoration: none;
+  color: #212529;
+}
