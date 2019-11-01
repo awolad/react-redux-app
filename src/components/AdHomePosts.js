@@ -1,11 +1,12 @@
 import React from 'react';
-import {
- Card, Row, Col, Button 
-} from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './css/AdLatestPosts.css';
+import PropTypes from 'prop-types';
+import slugify from 'slugify';
+import { strSlice } from '../helpers';
 
-const AdHomePosts = () => (
+const AdHomePosts = ({ data }) => (
   <>
     <div className="mt-5">
       <Row className="mb-2">
@@ -13,95 +14,74 @@ const AdHomePosts = () => (
           <h3 className="text-info">Posts</h3>
         </Col>
         <Col md={6}>
-          <Button className="float-right" variant="outline-info">
+          <Link to="/posts" className="float-right btn btn-outline-info">
             View More &#8594;
-          </Button>
+          </Link>
         </Col>
       </Row>
       <Row>
         <Col md={6}>
           <Row>
-            <Col md={6}>
-              <Link className="card-post-link" to="/">
+            {data
+              ? data.slice(0, 4).map((post, index) => (
+                <Col md={6} key={index}>
+                  <Link
+                    className="card-post-link"
+                    to={`/${post.id}/${slugify(post.title)}`}
+                  >
+                    <Card>
+                      <Card.Img
+                        variant="top"
+                        src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/250/150`}
+                      />
+                      <Card.Body>
+                        <Card.Title>
+                          {`${strSlice(post.title, 0, 15)}...`}
+                        </Card.Title>
+                        <Card.Text>
+                          {`${strSlice(post.body, 0, 45)}...`}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Link>
+                </Col>
+              ))
+              : ''}
+          </Row>
+        </Col>
+        <Col md={6}>
+          {data
+            ? data.slice(4, 5).map((post, index) => (
+              <Link
+                key={index}
+                className="card-post-link"
+                to={`/${post.id}/${slugify(post.title)}`}
+              >
                 <Card>
                   <Card.Img
                     variant="top"
-                    src={`${process.env.REACT_APP_PHOTO_API}/${10}/250/150`}
+                    src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/500/420`}
                   />
                   <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>
+                      {`${strSlice(post.title, 0, 45)}...`}
+                    </Card.Title>
                     <Card.Text>
-                      Some quick example text to build on the card title and
+                      {`${strSlice(post.body, 0, 130)}...`}
                     </Card.Text>
                   </Card.Body>
                 </Card>
               </Link>
-            </Col>
-            <Col md={6}>
-              <Card className="mb-4">
-                <Card.Img
-                  variant="top"
-                  src={`${process.env.REACT_APP_PHOTO_API}/${10}/250/150`}
-                />
-                <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card className="mb-4">
-                <Card.Img
-                  variant="top"
-                  src={`${process.env.REACT_APP_PHOTO_API}/${10}/250/150`}
-                />
-                <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card>
-                <Card.Img
-                  variant="top"
-                  src={`${process.env.REACT_APP_PHOTO_API}/${10}/250/150`}
-                />
-                <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-        <Col md={6}>
-          <Link className="card-post-link" to="/">
-            <Card>
-              <Card.Img
-                variant="top"
-                src={`${process.env.REACT_APP_PHOTO_API}/${10}/500/420`}
-              />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content. build on the card tit build on
-                  the card tit
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Link>
+            ))
+            : ''}
         </Col>
       </Row>
     </div>
   </>
 );
+
+AdHomePosts.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default AdHomePosts;

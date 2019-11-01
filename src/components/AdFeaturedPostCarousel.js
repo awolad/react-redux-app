@@ -1,54 +1,43 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import slugify from 'slugify';
+import { strSlice } from '../helpers';
+import './css/AdFeaturedPostCarousel.css';
 
-const AdFeaturedPostCarousel = () => (
+const AdFeaturedPostCarousel = ({ data }) => (
   <>
     <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={`${
-            process.env.REACT_APP_PHOTO_API
-          }/${10}/2000/300?text=Second slide&bg=282c34`}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={`${
-            process.env.REACT_APP_PHOTO_API
-          }/${12}/2000/300?text=Second slide&bg=282c34`}
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={`${
-            process.env.REACT_APP_PHOTO_API
-          }/${14}/2000/300?text=Second slide&bg=282c34`}
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
+      {data
+        ? data.map((post, index) => (
+          <Carousel.Item key={index}>
+            <img
+              className="d-block w-100"
+              src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/2000/300?text=Second slide&bg=282c34`}
+              alt={post.title}
+            />
+            <Carousel.Caption>
+              <h3>
+                <Link
+                  key={index}
+                  className="card-post-link"
+                  to={`/${post.id}/${slugify(post.title)}`}
+                >
+                  {`${strSlice(post.title, 0, 50)}`}
+                </Link>
+              </h3>
+              <p>{`${strSlice(post.body, 0, 200)}...`}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))
+        : ''}
     </Carousel>
   </>
 );
+
+AdFeaturedPostCarousel.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default AdFeaturedPostCarousel;

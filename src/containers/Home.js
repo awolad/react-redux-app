@@ -8,6 +8,7 @@ import AdLatestPosts from '../components/AdLatestPosts';
 import AdFeaturedPostCarousel from '../components/AdFeaturedPostCarousel';
 import AdHomePosts from '../components/AdHomePosts';
 import { fetchPosts } from '../actions/post';
+import AdMainSlider from '../components/AdMainSlider';
 
 class Home extends Component {
   static propTypes = {
@@ -46,6 +47,11 @@ class Home extends Component {
   render() {
     return (
       <>
+        <Container fluid>
+          <Row>
+            <AdMainSlider data={this.getRandomThreePosts()} />
+          </Row>
+        </Container>
         <Container>
           <Row>
             <Col md={12}>
@@ -54,19 +60,19 @@ class Home extends Component {
           </Row>
           <Row>
             <Col md={12}>
-              <AdLatestPosts />
+              <AdLatestPosts data={this.getRandomFivePosts()} />
             </Col>
           </Row>
         </Container>
         <Container fluid>
           <Row>
-            <AdFeaturedPostCarousel />
+            <AdFeaturedPostCarousel data={this.getRandomThreePosts()} />
           </Row>
         </Container>
         <Container>
           <Row>
             <Col md={12}>
-              <AdHomePosts />
+              <AdHomePosts data={this.getRandomFivePosts()} />
             </Col>
           </Row>
         </Container>

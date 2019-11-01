@@ -5,8 +5,12 @@ import { Image } from 'react-bootstrap';
 
 const AdScrollToTop = () => (
   <>
-    <ScrollToTop showUnder={0} duration={400}>
-      <Image src="/images/up_arrow_round.png" rounded />
+    <ScrollToTop showUnder={0} duration={400} style={{ right: '10px' }}>
+      <Image
+        src="/images/up_arrow_round.png"
+        rounded
+        style={{ width: '35px', height: '35px' }}
+      />
     </ScrollToTop>
   </>
 );

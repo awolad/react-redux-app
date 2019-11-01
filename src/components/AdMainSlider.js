@@ -1,50 +1,43 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import slugify from 'slugify';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { strSlice } from '../helpers';
 
-const AdMainSlider = () => (
+const AdMainSlider = ({ data }) => (
   <>
     <div className="ad-main-slider">
       <Carousel>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://picsum.photos/id/1/1920/700"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://picsum.photos/id/2/1920/700"
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://picsum.photos/id/3/1920/700"
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
+        {data
+          ? data.map((post, index) => (
+            <Carousel.Item key={index}>
+              <img
+                className="d-block w-100"
+                src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/1920/700`}
+                alt={post.title}
+              />
+              <Carousel.Caption>
+                <h3>
+                  <Link
+                    className="card-post-link"
+                    to={`/${post.id}/${slugify(post.title)}`}
+                  >
+                    {`${strSlice(post.title, 0, 50)}`}
+                  </Link>
+                </h3>
+                <p>{strSlice(post.body, 0, 200)}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))
+          : ''}
       </Carousel>
     </div>
   </>
 );
+
+AdMainSlider.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default AdMainSlider;

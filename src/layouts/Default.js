@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdNavBar from '../components/AdNavBar';
-import AdMainSlider from '../components/AdMainSlider';
 import { fetchCategories } from '../actions/category';
 import AdFooter from '../components/AdFooter';
 
@@ -25,7 +24,6 @@ class Default extends Component {
       <>
         <div className="default-layout">
           <AdNavBar category={category} />
-          <AdMainSlider />
           {children}
           <AdFooter />
         </div>
@@ -34,7 +32,7 @@ class Default extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { category } = state;
 
   return {
