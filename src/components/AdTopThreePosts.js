@@ -1,60 +1,46 @@
 import React from 'react';
-import { CardDeck, Card } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import slugify from 'slugify';
+import { strSlice } from '../helpers';
 
-const AdTopThreePosts = () => (
+const AdTopThreePosts = ({ data }) => (
   <>
-    <CardDeck className="mt-5">
-      <Card>
-        <Card.Img
-          variant="top"
-          src={`${process.env.REACT_APP_PHOTO_API}/${10}/100/75`}
-        />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Posted By: Jakir Hossain</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Img
-          variant="top"
-          src={`${process.env.REACT_APP_PHOTO_API}/${11}/100/75`}
-        />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Posted By: Awolad Hossain</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Img
-          variant="top"
-          src={`${process.env.REACT_APP_PHOTO_API}/${12}/100/75`}
-        />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Posted By: Salman Farshy</small>
-        </Card.Footer>
-      </Card>
-    </CardDeck>
+    <div className="mt-5 ad-top-three-posts">
+      <Row>
+        {data
+          ? data.map((post, index) => (
+            <Col md={4} key={index}>
+              <Link
+                className="card-post-link"
+                to={`/${post.id}/${slugify(post.title)}`}
+              >
+                <Card>
+                  <Card.Img
+                    variant="top"
+                    src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/500/420`}
+                  />
+                  <Card.Body>
+                    <Card.Title>
+                      {`${strSlice(post.title, 0, 25)}...`}
+                    </Card.Title>
+                    <Card.Text>
+                      {`${strSlice(post.body, 0, 75)}...`}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </Col>
+          ))
+          : ''}
+      </Row>
+    </div>
   </>
 );
+
+AdTopThreePosts.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default AdTopThreePosts;
