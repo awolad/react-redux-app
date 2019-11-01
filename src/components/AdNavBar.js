@@ -23,7 +23,11 @@ const AdNavBar = ({ category }) => {
           ) : (
             <Nav className="mr-auto">
               {category.categories.map((item, i) => (
-                <NavLink key={i} className="nav-link" to="/">
+                <NavLink
+                  key={i}
+                  className="nav-link"
+                  to={`/categories/${item.title.toLowerCase()}`}
+                >
                   {item.title}
                 </NavLink>
               ))}

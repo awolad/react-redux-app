@@ -9,6 +9,7 @@ import WithRightSidebar from '../layouts/WithRightSidebar';
 import NotFound from '../layouts/NotFound';
 import AdNotFound from '../components/AdNotFound';
 import SinglePost from '../containers/SinglePost';
+import CategoryPostIndex from '../containers/CategoryPostIndex';
 
 const Routes = () => (
   <Router>
@@ -19,6 +20,12 @@ const Routes = () => (
         path="/posts"
         layout={WithoutSlider}
         component={PostIndex}
+      />
+      <AppRoute
+        exact
+        path="/categories/:id"
+        layout={WithoutSlider}
+        component={CategoryPostIndex}
       />
       <AppRoute
         exact

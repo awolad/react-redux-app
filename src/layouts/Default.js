@@ -32,7 +32,7 @@ class Default extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { category } = state;
 
   return {

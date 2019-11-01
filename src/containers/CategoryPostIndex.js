@@ -8,22 +8,42 @@ import AdPageHeaderImage from '../components/AdPageHeaderImage';
 import AdBreadcrumb from '../components/AdBreadcrumb';
 import { fetchPosts } from '../actions/post';
 
-class PostIndex extends Component {
+class CategoryPostIndex extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.getRandomFiftyPosts = this.getRandomFiftyPosts.bind(this);
+  }
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchPosts());
   }
 
-  render() {
+  getRandomFiftyPosts() {
     const { post } = this.props;
+    if (post.posts) {
+      return post.posts.sort(() => Math.random() - Math.random()).slice(0, 50);
+    }
+    return [];
+  }
+
+  render() {
+    const { match } = this.props;
     const breadcrumbItems = [
       { url: '/', text: 'Home', active: false },
-      { url: '/posts', text: 'Posts', active: true },
+      { url: '/categories', text: 'Categories', active: false },
+      {
+        url: `/categories/${match.params.id}`,
+        text: match.params.id,
+        active: true,
+      },
     ];
 
     return (
@@ -33,7 +53,7 @@ class PostIndex extends Component {
           <Row>
             <Col md={12}>
               <AdBreadcrumb data={breadcrumbItems} />
-              <AdPosts data={post.posts} />
+              <AdPosts data={this.getRandomFiftyPosts()} />
             </Col>
           </Row>
         </Container>
@@ -50,4 +70,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(PostIndex));
+export default withRouter(connect(mapStateToProps)(CategoryPostIndex));

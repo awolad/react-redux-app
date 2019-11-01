@@ -9,7 +9,7 @@ import slugify from 'slugify';
 // const AdPosts = ({ data }) => ;
 class AdPosts extends Component {
   static propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.array.isRequired,
   };
 
   constructor(props) {
@@ -37,7 +37,7 @@ class AdPosts extends Component {
       <>
         <Container>
           <Row>
-            {data.posts.slice(0, visible).map((post, i) => (
+            {data.slice(0, visible).map((post, i) => (
               <Col md={3} key={i}>
                 <Card className="text-center mb-4">
                   <Card.Img

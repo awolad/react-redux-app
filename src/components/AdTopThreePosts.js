@@ -26,7 +26,7 @@ const AdTopThreePosts = ({ data }) => (
                       {`${strSlice(post.title, 0, 25)}...`}
                     </Card.Title>
                     <Card.Text>
-                      {`${strSlice(post.body, 0, 75)}...`}
+                      {`${strSlice(post.body, 0, 70)}...`}
                     </Card.Text>
                   </Card.Body>
                 </Card>
