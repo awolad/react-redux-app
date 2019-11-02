@@ -6,9 +6,9 @@ import Home from './Home';
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <div>
+    <>
       <Route path="/" component={Home} />
-    </div>
+    </>
   </Provider>
 );
 
