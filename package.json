@@ -7,6 +7,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "now-build": "yarn build",
     "eject": "react-scripts eject",
     "test": "react-scripts test --env=node --passWithNoTests"
   },
