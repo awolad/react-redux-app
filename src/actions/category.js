@@ -28,7 +28,7 @@ function fetchCategoriesFailure(error) {
 export const fetchCategories = () => (dispatch) => {
   dispatch(fetchCategoriesPending());
   axios
-    .get(`${process.env.REACT_APP_URL}/data/categories.json`)
+    .get(`${process.env.REACT_APP_URL}/public/data/categories.json`)
     .then((res) => {
       dispatch(fetchCategoriesSuccess(res.data));
     })
