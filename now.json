@@ -4,12 +4,17 @@
   "builds": [
     {
       "src": "package.json",
+      "use": "@now/static-build",
       "config": { "distDir": "build" }
     }
   ],
   "routes": [
-    { "src": "^/public/(.*)", "dest": "/public/$1" },
+    { "src": "^/static/(.*)", "dest": "/static/$1" },
     { "src": "^/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "^/data/categories.json", "dest": "/data/categories.json" },
+    { "src": "^/asset-manifest.json", "dest": "/asset-manifest.json" },
+    { "src": "^/manifest.json", "dest": "/manifest.json" },
+    { "src": "^/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
     { "src": "^/(.*)", "dest": "/index.html" }
   ]
 }

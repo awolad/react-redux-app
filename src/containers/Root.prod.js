@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { Route } from 'react-router-dom';
-import Home from './Home';
+import ReduxToastr from 'react-redux-toastr';
+import Routes from '../routes';
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <>
-      <Route path="/" component={Home} />
+      <Routes />
+      <ReduxToastr />
     </>
   </Provider>
 );
