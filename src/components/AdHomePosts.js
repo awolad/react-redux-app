@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './css/AdLatestPosts.css';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
-import { strSlice } from '../helpers';
+import { strSlice, loremflickrImage } from '../helpers';
 
 const AdHomePosts = ({ data }) => (
   <>
@@ -24,7 +24,7 @@ const AdHomePosts = ({ data }) => (
           <Row>
             {data
               ? data.slice(0, 4).map((post, index) => (
-                <Col md={6} key={index}>
+                <Col key={index} md={6} className="mb-4">
                   <Link
                     className="card-post-link"
                     to={`/${post.id}/${slugify(post.title)}`}
@@ -32,7 +32,7 @@ const AdHomePosts = ({ data }) => (
                     <Card>
                       <Card.Img
                         variant="top"
-                        src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/250/150`}
+                        src={loremflickrImage(post.id, 250, 150)}
                       />
                       <Card.Body>
                         <Card.Title>
@@ -60,7 +60,7 @@ const AdHomePosts = ({ data }) => (
                 <Card>
                   <Card.Img
                     variant="top"
-                    src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/500/420`}
+                    src={loremflickrImage(post.id, 500, 420)}
                   />
                   <Card.Body>
                     <Card.Title>
