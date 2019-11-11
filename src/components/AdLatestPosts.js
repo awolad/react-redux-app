@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './css/AdLatestPosts.css';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
-import { strSlice, loremflickrImage } from '../helpers';
+import { strSlice, unSplashImage } from '../helpers';
 
 const AdLatestPosts = ({ data }) => (
   <>
@@ -31,7 +31,7 @@ const AdLatestPosts = ({ data }) => (
                 <Card>
                   <Card.Img
                     variant="top"
-                    src={loremflickrImage(post.id, 500, 420)}
+                    src={unSplashImage(post.id, 500, 420)}
                   />
                   <Card.Body>
                     <Card.Title>
@@ -58,14 +58,14 @@ const AdLatestPosts = ({ data }) => (
                     <Card>
                       <Card.Img
                         variant="top"
-                        src={loremflickrImage(post.id, 250, 150)}
+                        src={unSplashImage(post.id, 250, 150)}
                       />
                       <Card.Body>
                         <Card.Title>
                           {`${strSlice(post.title, 0, 15)}...`}
                         </Card.Title>
                         <Card.Text>
-                          {`${strSlice(post.body, 0, 45)}...`}
+                          {`${strSlice(post.body, 0, 40)}...`}
                         </Card.Text>
                       </Card.Body>
                     </Card>

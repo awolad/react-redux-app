@@ -2,14 +2,14 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { loremflickrImage } from '../helpers';
+import { unSplashImage } from '../helpers';
 
 const AdPost = ({ data }) => (
   <div className="ad-post">
     <Card>
       <Card.Img
         variant="top"
-        src={loremflickrImage(data.post ? data.post.id : 10, 250, 150)}
+        src={unSplashImage(data.post ? data.post.id : 10, 250, 150)}
       />
       <Card.Body>
         <Card.Title>{data.post ? data.post.title : ''}</Card.Title>

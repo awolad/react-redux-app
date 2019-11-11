@@ -3,7 +3,7 @@ import { Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import slugify from 'slugify';
-import { strSlice } from '../helpers';
+import { strSlice, unSplashImage } from '../helpers';
 
 const AdTopThreePosts = ({ data }) => (
   <>
@@ -19,14 +19,14 @@ const AdTopThreePosts = ({ data }) => (
                 <Card>
                   <Card.Img
                     variant="top"
-                    src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/500/420`}
+                    src={unSplashImage(post.id, 500, 420)}
                   />
                   <Card.Body>
                     <Card.Title>
                       {`${strSlice(post.title, 0, 25)}...`}
                     </Card.Title>
                     <Card.Text>
-                      {`${strSlice(post.body, 0, 70)}...`}
+                      {`${strSlice(post.body, 0, 65)}...`}
                     </Card.Text>
                   </Card.Body>
                 </Card>

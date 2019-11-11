@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import slugify from 'slugify';
+import { unSplashImage } from '../helpers';
 
 // const AdPosts = ({ data }) => ;
 class AdPosts extends Component {
@@ -42,7 +43,7 @@ class AdPosts extends Component {
                 <Card className="text-center mb-4">
                   <Card.Img
                     variant="top"
-                    src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/100/80`}
+                    src={unSplashImage(post.id, 100, 80)}
                   />
                   <Card.Body>
                     <Card.Title>{this.formattedTitle(post.title)}</Card.Title>

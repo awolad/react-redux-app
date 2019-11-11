@@ -3,7 +3,7 @@ import { Carousel } from 'react-bootstrap';
 import slugify from 'slugify';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { strSlice } from '../helpers';
+import { strSlice, unSplashImage } from '../helpers';
 
 const AdMainSlider = ({ data }) => (
   <>
@@ -14,7 +14,7 @@ const AdMainSlider = ({ data }) => (
             <Carousel.Item key={index}>
               <img
                 className="d-block w-100"
-                src={`${process.env.REACT_APP_PHOTO_API}/${post.id}/1920/700`}
+                src={unSplashImage(post.id, 1920, 700)}
                 alt={post.title}
               />
               <Carousel.Caption>

@@ -5,17 +5,19 @@ import AdScrollToTop from './AdScrollToTop';
 const AdFooter = () => (
   <>
     <footer className="blog-footer">
-      <p>A React Redux Boilarplate template.</p>
+      <p>A React Redux Demo Application.</p>
       <p>
-        Developed by
-        <a
-          className="ml-1"
-          href="http://awolad.net"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Awolad
-        </a>
+        <em>
+          Developed By
+          <a
+            className="ml-1"
+            href="http://awolad.net"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Awolad
+          </a>
+        </em>
       </p>
     </footer>
     <AdScrollToTop />
